@@ -154,6 +154,7 @@ resource "aws_launch_configuration" "rabbitmq" {
   security_groups      = ["${aws_security_group.rabbitmq_nodes.id}"]
   iam_instance_profile = "${aws_iam_instance_profile.profile.id}"
   user_data            = "${data.template_file.cloud-init.rendered}"
+  associate_public_ip_address = true
 }
 
 resource "aws_autoscaling_group" "rabbitmq" {
